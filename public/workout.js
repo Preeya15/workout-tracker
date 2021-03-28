@@ -1,21 +1,21 @@
-async function initWorkout() {
-  const lastWorkout = await API.getLastWorkout();
-  console.log("Last workout:", lastWorkout);
-  if (lastWorkout) {
+async function initworkout() {
+  const lastworkout = await API.getLastworkout();
+  console.log("Last workout:", lastworkout);
+  if (lastworkout) {
     document
       .querySelector("a[href='/exercise?']")
-      .setAttribute("href", `/exercise?id=${lastWorkout._id}`);
+      .setAttribute("href", `/exercise?id=${lastworkout._id}`);
 
     const workoutSummary = {
-      date: formatDate(lastWorkout.day),
-      totalDuration: lastWorkout.totalDuration,
-      numExercises: lastWorkout.exercises.length,
-      ...tallyExercises(lastWorkout.exercises)
+      date: formatDate(lastworkout.day),
+      totalDuration: lastworkout.totalDuration,
+      numExercises: lastworkout.exercises.length,
+      ...tallyExercises(lastworkout.exercises)
     };
 
-    renderWorkoutSummary(workoutSummary);
+    renderworkoutSummary(workoutSummary);
   } else {
-    renderNoWorkoutText()
+    renderNoworkoutText()
   }
 }
 
@@ -44,12 +44,12 @@ function formatDate(date) {
   return new Date(date).toLocaleDateString(options);
 }
 
-function renderWorkoutSummary(summary) {
+function renderworkoutSummary(summary) {
   const container = document.querySelector(".workout-stats");
 
   const workoutKeyMap = {
     date: "Date",
-    totalDuration: "Total Workout Duration",
+    totalDuration: "Total workout Duration",
     numExercises: "Exercises Performed",
     totalWeight: "Total Weight Lifted",
     totalSets: "Total Sets Performed",
@@ -71,7 +71,7 @@ function renderWorkoutSummary(summary) {
   });
 }
 
-function renderNoWorkoutText() {
+function renderNoworkoutText() {
   const container = document.querySelector(".workout-stats");
   const p = document.createElement("p");
   const strong = document.createElement("strong");
@@ -81,4 +81,4 @@ function renderNoWorkoutText() {
   container.appendChild(p);
 }
 
-initWorkout();
+initworkout();
